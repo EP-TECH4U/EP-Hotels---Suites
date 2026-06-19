@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rooms & Suites | EP Hotels & Suites</title>
+  <meta name="description" content="Explore 20 luxury rooms and suites at EP Hotels & Suites. Compare prices, amenities, and book your perfect stay.">
+   <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="64*64" href="logo2.png">
+  <style>
+    :root {
+      --primary: #0A4D68;
+      --secondary: #088395;
+      --accent: #F5A623;
+      --light: #F8F9FA;
+      --dark: #1A1A1A;
+      --text: #333;
+      --success: #27ae60;
+      --danger: #e74c3c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    
+    /* Header - Same as Home */
+    header {
+      background: rgba(10, 77, 104, 0.95);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .btn {
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #e09612; transform: translateY(-2px); }
+    .btn-sm { padding: 0.5rem 1rem; font-size: 0.9rem; }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent); color: var(--dark); }
+    .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("images\ \(20\).jpeg") center/cover;
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .breadcrumb { opacity: 0.8; font-size: 0.95rem; }
+    .breadcrumb a:hover { color: var(--accent); }
+
+    /* Filters Bar */
+    .filters-bar {
+      background: white;
+      padding: 1.5rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 68px;
+      z-index: 900;
+    }
+    .filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .filter-left {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .filter-group label { font-weight: 600; color: var(--primary); font-size: 0.9rem; }
+    .filter-group select {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      min-width: 150px;
+      cursor: pointer;
+    }
+    .badge {
+      background: var(--primary);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Category Tabs */
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 3rem 0 2rem;
+      flex-wrap: wrap;
+    }
+    .tab {
+      padding: 0.6rem 1.3rem;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+    .tab.active, .tab:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Rooms Grid */
+    section { padding: 2rem 0 4rem; }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .room-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+      position: relative;
+      display: none;
+    }
+    .room-card.show { display: block; }
+    .room-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+    .room-img {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+    .room-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+    .room-card:hover .room-img img { transform: scale(1.08); }
+    .room-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .room-tag.popular { background: var(--success); color: white; }
+    .room-tag.new { background: var(--secondary); color: white; }
+    .room-tag.luxury { background: var(--dark); color: var(--accent); }
+    .room-info { padding: 1.5rem; }
+    .room-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 0.5rem;
+    }
+    .room-info h3 { color: var(--primary); font-size: 1.35rem; }
+    .room-size { color: #666; font-size: 0.85rem; background: var(--light); padding: 0.2rem 0.5rem; border-radius: 4px; }
+    .room-desc { margin: 0.8rem 0; color: #555; font-size: 0.9rem; line-height: 1.5; }
+    .amenities {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    .amenities span {
+      background: var(--light);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .room-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+    .price-wrap .price {
+      color: var(--primary);
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .price-wrap .per { color: #666; font-size: 0.85rem; }
+    .price-wrap .tax { color: #999; font-size: 0.7rem; display: block; }
+
+    /* Footer - Same as Home */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 { color: white; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a:hover { color: var(--accent); }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .page-hero h1 { font-size: 2.2rem; }
+      .filters { flex-direction: column; align-items: stretch; }
+      .filter-left { flex-direction: column; align-items: stretch; }
+      .rooms-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">EP <span>Hotels & Suites</span></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="rooms.html" class="active">Rooms</a></li>
+          <li><a href="ameni.html">Amenities</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="btn" onclick="alert('Redirecting to booking engine...')">Book Now</button>
+        <div class="mobile-toggle">☰</div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Rooms & Suites</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <span>Rooms</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <div class="filters-bar">
+    <div class="container">
+      <div class="filters">
+        <div class="filter-left">
+          <div class="filter-group">
+            <label>Sort:</label>
+            <select id="sortBy" onchange="filterRooms()">
+              <option value="recommended">Recommended</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="size">Room Size</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>View:</label>
+            <select id="viewFilter" onchange="filterRooms()">
+              <option value="all">All Views</option>
+              <option value="city">City View</option>
+              <option value="pool">Pool View</option>
+              <option value="ocean">Ocean View</option>
+              <option value="garden">Garden View</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Guests:</label>
+            <select id="guestFilter" onchange="filterRooms()">
+              <option value="all">Any</option>
+              <option value="1-2">1-2 Guests</option>
+              <option value="3-4">3-4 Guests</option>
+              <option value="5+">5+ Guests</option>
+            </select>
+          </div>
+        </div>
+        <span class="badge" id="roomCount">20 Rooms</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rooms Section -->
+  <section>
+    <div class="container">
+      <div class="category-tabs">
+        <button class="tab active" onclick="filterByCategory('all')">All Rooms</button>
+        <button class="tab" onclick="filterByCategory('deluxe')">Deluxe</button>
+        <button class="tab" onclick="filterByCategory('executive')">Executive</button>
+        <button class="tab" onclick="filterByCategory('suite')">Suites</button>
+        <button class="tab" onclick="filterByCategory('presidential')">Presidential</button>
+      </div>
+
+      <div class="rooms-grid" id="roomsContainer">
+        <!-- 1. Deluxe City Room -->
+        <div class="room-card show" data-category="deluxe" data-price="120" data-size="35" data-view="city" data-guests="2">
+          <div class="room-img">
+            <img src="images (11).jpeg" alt="Deluxe City Room">
+            <span class="room-tag" id="bestvalue">Best Value</span>
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Deluxe City Room</h3>
+              <span class="room-size">35m²</span>
+            </div>
+            <p class="room-desc">Modern room with floor-to-ceiling windows overlooking Victoria Island skyline.</p>
+            <div class="amenities">
+              <span>🛏️ King Bed</span><span>📶 WiFi</span><span>☕ Coffee</span><span>🚿 Rain Shower</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$120</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Deluxe City Room', 120)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Deluxe Pool View -->
+        <div class="room-card show" data-category="deluxe" data-price="135" data-size="38" data-view="pool" data-guests="2">
+          <div class="room-img">
+            <img src="images (9).jpeg" alt="Deluxe Pool View">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Deluxe Pool View</h3>
+              <span class="room-size">38m²</span>
+            </div>
+            <p class="room-desc">Tranquil room with private balcony facing our infinity pool and gardens.</p>
+            <div class="amenities">
+              <span>🛏️ King Bed</span><span>🌴 Balcony</span><span>📺 Smart TV</span><span>🧊 Minibar</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$135</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Deluxe Pool View', 135)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Deluxe Family Room -->
+        <div class="room-card show" data-category="deluxe" data-price="145" data-size="40" data-view="city" data-guests="3">
+          <div class="room-img">
+            <img src="images (4).jpeg" alt="Deluxe Family">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Deluxe Family Room</h3>
+              <span class="room-size">40m²</span>
+            </div>
+            <p class="room-desc">Spacious layout with 1 king + 1 single bed. Perfect for small families.</p>
+            <div class="amenities">
+              <span>🛏️ 2 Beds</span><span>👨‍👩‍👧 Family</span><span>🛁 Bathtub</span><span>🧳 Extra Space</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$145</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Deluxe Family Room', 145)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Premium Deluxe -->
+        <div class="room-card show" data-category="deluxe" data-price="155" data-size="42" data-view="city" data-guests="2">
+          <div class="room-img">
+            <img src="images (5).jpeg" alt="Premium Deluxe">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Premium Deluxe</h3>
+              <span class="room-size">42m²</span>
+            </div>
+            <p class="room-desc">Enhanced deluxe with premium mattress, pillow menu, and aromatherapy.</p>
+            <div class="amenities">
+              <span>😴 Pillow Menu</span><span>🌸 Aromatherapy</span><span>☕ Espresso</span><span>🧘 Yoga Space</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$155</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Premium Deluxe', 155)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Executive Room -->
+        <div class="room-card show" data-category="executive" data-price="180" data-size="45" data-view="city" data-guests="2">
+          <div class="room-img">
+            <img src="images (15).jpeg" alt="Executive Room">
+            <span class="room-tag popular">Popular</span>
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Executive Room</h3>
+              <span class="room-size">45m²</span>
+            </div>
+            <p class="room-desc">Upgraded furnishings, work desk, Nespresso machine, and lounge access.</p>
+            <div class="amenities">
+              <span>💼 Work Desk</span><span>☕ Nespresso</span><span>🎁 Lounge Access</span><span>👔 Suit Press</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$180</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Executive Room', 180)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Executive Ocean View -->
+        <div class="room-card show" data-category="executive" data-price="195" data-size="48" data-view="ocean" data-guests="2">
+          <div class="room-img">
+            <img src="images (16).jpeg" alt="Executive Ocean">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Executive Ocean View</h3>
+              <span class="room-size">48m²</span>
+            </div>
+            <p class="room-desc">Wake up to Atlantic Ocean views with premium linens and marble bathroom.</p>
+            <div class="amenities">
+              <span>🌊 Ocean View</span><span>🛁 Marble Bath</span><span>🥂 Welcome Drink</span><span>🔇 Soundproof</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$195</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Executive Ocean View', 195)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Executive Corner Suite -->
+        <div class="room-card show" data-category="executive" data-price="210" data-size="50" data-view="city" data-guests="2">
+          <div class="room-img">
+            <img src="images (17).jpeg" alt="Executive Corner">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Executive Corner Suite</h3>
+              <span class="room-size">50m²</span>
+            </div>
+            <p class="room-desc">Corner unit with panoramic windows, seating area, and enhanced privacy.</p>
+            <div class="amenities">
+              <span>📐 Corner Unit</span><span>🛋️ Sitting Area</span><span>🌃 Night View</span><span>🚪 Privacy</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$210</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Executive Corner Suite', 210)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Executive Plus -->
+        <div class="room-card show" data-category="executive" data-price="225" data-size="55" data-view="pool" data-guests="2">
+          <div class="room-img">
+            <img src="images (18).jpeg" alt="Executive Plus">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Executive Plus</h3>
+              <span class="room-size">55m²</span>
+            </div>
+            <p class="room-desc">Larger executive with spa bath, dressing room, and complimentary pressing.</p>
+            <div class="amenities">
+              <span>🛁 Spa Bath</span><span>👔 Pressing</span><span>👗 Dressing Room</span><span>💆 Robes</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$225</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Executive Plus', 225)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Junior Suite -->
+        <div class="room-card show" data-category="suite" data-price="250" data-size="60" data-view="city" data-guests="2">
+          <div class="room-img">
+            <img src="images (19).jpeg" alt="Junior Suite">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Junior Suite</h3>
+              <span class="room-size">60m²</span>
+            </div>
+            <p class="room-desc">Separate bedroom and living room. Includes minibar and premium toiletries.</p>
+            <div class="amenities">
+              <span>🛋️ Living Room</span><span>🍾 Minibar</span><span>👗 Walk-in Closet</span><span>🛁 Jacuzzi</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$250</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Junior Suite', 250)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10. Garden Pool Suite -->
+        <div class="room-card show" data-category="suite" data-price="280" data-size="65" data-view="garden" data-guests="3">
+          <div class="room-img">
+            <img src="images (20).jpeg" alt="Garden Suite">
+            <span class="room-tag new">New</span>
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Garden Pool Suite</h3>
+              <span class="room-size">65m²</span>
+            </div>
+            <p class="room-desc">Ground floor suite with direct garden access and private plunge pool.</p>
+            <div class="amenities">
+              <span>🏊 Private Pool</span><span>🌿 Garden Access</span><span>🍃 Terrace</span><span>🧘 Yoga Mat</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$280</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Garden Pool Suite', 280)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. Oceanfront Suite -->
+        <div class="room-card show" data-category="suite" data-price="320" data-size="75" data-view="ocean" data-guests="2">
+          <div class="room-img">
+            <img src="images (21).jpeg" alt="Ocean Suite">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Oceanfront Suite</h3>
+              <span class="room-size">75m²</span>
+            </div>
+            <p class="room-desc">Premium suite with wraparound balcony and unobstructed ocean views.</p>
+            <div class="amenities">
+              <span>🌊 Oceanfront</span><span>🌅 Sunrise View</span><span>🍸 Honour Bar</span><span>🛏️ King + Sofa</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$320</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Oceanfront Suite', 320)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12. Grand Family Suite -->
+        <div class="room-card show" data-category="suite" data-price="350" data-size="80" data-view="city" data-guests="4">
+          <div class="room-img">
+            <img src="images (22).jpeg" alt="Family Suite">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Grand Family Suite</h3>
+              <span class="room-size">80m²</span>
+            </div>
+            <p class="room-desc">2 bedrooms, 2 bathrooms, kitchenette. Ideal for families or groups.</p>
+            <div class="amenities">
+              <span>👨‍👩‍👧‍👦 2 Bedrooms</span><span>🍳 Kitchenette</span><span>🎮 PS5</span><span>🧺 Laundry</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$350</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Grand Family Suite', 350)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13. Diplomatic Suite -->
+        <div class="room-card show" data-category="suite" data-price="380" data-size="85" data-view="city" data-guests="2">
+          <div class="room-img">
+            <img src="images (23).jpeg" alt="Diplomatic Suite">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Diplomatic Suite</h3>
+              <span class="room-size">85m²</span>
+            </div>
+            <p class="room-desc">Executive suite with meeting area, printer, and 24/7 butler service.</p>
+            <div class="amenities">
+              <span>💼 Meeting Table</span><span>🖨️ Printer</span><span>🤵 Butler</span><span>🔒 Safe Room</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$380</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Diplomatic Suite', 380)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Sunset Penthouse -->
+        <div class="room-card show" data-category="suite" data-price="420" data-size="90" data-view="ocean" data-guests="2">
+          <div class="room-img">
+            <img src="images (24).jpeg" alt="Sunset Suite">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Sunset Penthouse</h3>
+              <span class="room-size">90m²</span>
+            </div>
+            <p class="room-desc">Top floor with west-facing terrace. Includes telescope and champagne service.</p>
+            <div class="amenities">
+              <span>🌇 Sunset View</span><span>🔭 Telescope</span><span>🍾 Champagne</span><span>🎵 Sound System</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$420</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Sunset Penthouse', 420)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Wellness Suite -->
+        <div class="room-card show" data-category="suite" data-price="450" data-size="95" data-view="garden" data-guests="2">
+          <div class="room-img">
+            <img src="images (21).jpeg" alt="Wellness Suite">
+            <span class="room-tag new">New</span>
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Wellness Suite</h3>
+              <span class="room-size">95m²</span>
+            </div>
+            <p class="room-desc">Air purifier, circadian lighting, Peloton bike, and in-room massage table.</p>
+            <div class="amenities">
+              <span>🚴 Peloton</span><span>💨 Air Purifier</span><span>💡 Circadian Light</span><span>💆 Massage Table</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$450</span><span class="per">/ night</span>
+                <span class="tax">+ tax & fees</span>
+              </div>
+              <button class="btn btn-sm" onclick="bookRoom('Wellness Suite', 450)">Book</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 16. Skyline Loft -->
+        <div class="room-card show" data-category="suite" data-price="480" data-size="100" data-view="city" data-guests="3">
+          <div class="room-img">
+            <img src="images (4).jpeg" alt="Skyline Loft">
+          </div>
+          <div class="room-info">
+            <div class="room-header">
+              <h3>Skyline Loft</h3>
+              <span class="room-size">100m²</span>
+            </div>
+            <p class="room-desc">Duplex loft with double-height windows, fireplace, and billiards table.</p>
+            <div class="amenities">
+              <span>🏠 Duplex</span><span>🔥 Fireplace</span><span>🎱 Billiards</span><span>📚 Library</span>
+            </div>
+            <div class="room-footer">
+              <div class="price-wrap">
+                <span class="price">$480</span><span class="per">/ night</span>
+                <span class="tax"></span>
+                </div>
+                <button class="btn btn-sm" onclick="bookRoom('Wellness Suite', 450)">Book</button>
+            </div>
+            
+            </div>
+
+
+            </body>
+</html>

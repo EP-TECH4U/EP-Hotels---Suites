@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EP Hotels & Suites | Luxury Stays & Comfort</title>
+  <meta name="description" content="EP Hotels & Suites - Experience luxury, comfort, and world-class hospitality. Book rooms, suites, events, and dining.">
+  <link rel="stylesheet" href="ephotels.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="64*64" href="logo2.png">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">EP <span>Hotels & Suites</span></div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="room.html">Rooms</a></li>
+          <li><a href="ameni.html">Amenities</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="btn" onclick="document.getElementById('booking').scrollIntoView()">Book Now</button>
+        <div class="mobile-toggle">☰</div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Experience Luxury at EP Hotels & Suites</h1>
+      <p>Where comfort meets elegance in the heart of the city</p>
+      <button class="headerbtn" onclick="document.getElementById('booking').scrollIntoView()">Check Availability</button>
+    </div>
+  </section>
+
+  <!-- Booking Widget -->
+  <div class="container" id="booking">
+    <div class="booking-widget">
+      <form class="booking-form" onsubmit="bookRoom(event)">
+        <div class="form-group">
+          <label for="checkin">Check In</label>
+          <input type="date" id="checkin" required>
+        </div>
+        <div class="form-group">
+          <label for="checkout">Check Out</label>
+          <input type="date" id="checkout" required>
+        </div>
+        <div class="form-group">
+          <label for="guests">Guests</label>
+          <select id="guests">
+            <option>1 Adult</option>
+            <option>2 Adults</option>
+            <option>2 Adults, 1 Child</option>
+            <option>2 Adults, 2 Children</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="room-type">Room Type</label>
+          <select id="room-type">
+            <option>All Rooms</option>
+            <option>Deluxe Room</option>
+            <option>Executive Suite</option>
+            <option>Presidential Suite</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Search Rooms</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rooms -->
+  <section id="rooms">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Rooms & Suites</h2>
+        <p>Choose from our selection of premium accommodations</p>
+      </div>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <img class="image4" src="images (4).jpeg" alt="Deluxe Room">
+          <div class="room-info">
+            <h3>Deluxe Room</h3>
+            <p>Spacious 35m² room with city view, king bed, and work desk.</p>
+            <div class="amenities">
+              <span>Free WiFi</span><span>Breakfast</span><span>Smart TV</span><span>AC</span>
+            </div>
+            <div class="price">$120 / night</div>
+            <button class="btn">Book Now</button>
+          </div>
+        </div>
+        <div class="room-card">
+          <img class="image10" src="images (10).jpeg" alt="Executive Suite">
+          <div class="room-info">
+            <h3>Executive Suite</h3>
+            <p>60m² suite with separate living area, minibar, and balcony.</p>
+            <div class="amenities">
+              <span>Free WiFi</span><span>Breakfast</span><span>Jacuzzi</span><span>Lounge Access</span>
+            </div>
+            <div class="price">$250 / night</div>
+            <button class="btn">Book Now</button>
+          </div>
+        </div>
+        <div class="room-card">
+          <img class="image11" src="images (11).jpeg" alt="Presidential Suite">
+          <div class="room-info">
+            <h3>Presidential Suite</h3>
+            <p>120m² of luxury with private dining, butler service, and skyline view.</p>
+            <div class="amenities">
+              <span>Butler</span><span>Private Bar</span><span>Meeting Room</span><span>Spa Access</span>
+            </div>
+            <div class="price">$650 / night</div>
+            <button class="btn">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities -->
+  <section id="amenities" style="background: white;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hotel Amenities</h2>
+        <p>Everything you need for a perfect stay</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-box">
+          <div>🏊</div>
+          <h3>Rooftop Pool</h3>
+          <p>Infinity pool with city views and poolside bar service</p>
+        </div>
+        <div class="feature-box">
+          <div>💪</div>
+          <h3>Fitness Center</h3>
+          <p>24/7 gym with modern equipment and personal trainers</p>
+        </div>
+        <div class="feature-box">
+          <div>🍽️</div>
+          <h3>Fine Dining</h3>
+          <p>3 restaurants serving local and international cuisine</p>
+        </div>
+        <div class="feature-box">
+          <div>💆</div>
+          <h3>Luxury Spa</h3>
+          <p>Full-service spa with massage, sauna, and wellness treatments</p>
+        </div>
+        <div class="feature-box">
+          <div>👔</div>
+          <h3>Business Center</h3>
+          <p>Meeting rooms, conference halls, and secretarial services</p>
+        </div>
+        <div class="feature-box">
+          <div>🚗</div>
+          <h3>Airport Shuttle</h3>
+          <p>Complimentary airport pickup and valet parking</p>
+        </div>
+        <div class="feature-box">
+          <div>📶</div>
+          <h3>High-Speed WiFi</h3>
+          <p>Free fiber internet in all rooms and public areas</p>
+        </div>
+        <div class="feature-box">
+          <div>🛎️</div>
+          <h3>24/7 Concierge</h3>
+          <p>Room service, tour bookings, and personalized assistance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Gallery</h2>
+        <p>Take a visual tour of EP Hotels & Suites</p>
+      </div>
+      <div class="gallery">
+        
+        <img src="images (6).jpeg" alt="Lobby">
+        <img src="images (7).jpeg" alt="Pool">
+        <img src="images (8).jpeg" alt="Restaurant">
+        <img src="images (9).jpeg" alt="Suite">
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Events & Dining -->
+  <section style="background: white;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Events & Dining</h2>
+        <p>Host and celebrate with us</p>
+      </div>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <img src="images (12).jpeg" alt="Weddings">
+          <div class="room-info">
+            <h3>Weddings & Events</h3>
+            <p>Ballrooms for 50-500 guests with catering and event planning.</p>
+            <button class="btn">Inquire Now</button>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="images (13).jpeg" alt="Restaurant">
+          <div class="room-info">
+            <h3>Skyline Restaurant</h3>
+            <p>Panoramic views with steakhouse menu and wine cellar.</p>
+            <button class="btn">Reserve Table</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2 id="contact">Contact Us</h2>
+        <p>We're here to help you 24/7</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+        <div>
+          <h3>EP Hotels & Suites</h3>
+          <p>📍 123 Luxury Avenue, Victoria Island, Lagos</p>
+          <p>📞 +234 813 896 2418 EP HOTEL</p>
+          <p>✉️ ebukaprosperity12@gmail.com</p>
+          <p>🕒 Check-in: 2:00 PM | Check-out: 12:00 PM</p>
+        </div>
+        <form onsubmit="sendMessage(event)">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message" rows="4" style="width:100%; padding:0.7rem; border:1px solid #ddd; border-radius:4px;" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>EP Hotels & Suites</h4>
+          <p>Redefining luxury hospitality since 2015. Your comfort is our priority.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="room.html">Rooms & Suites</a></li>
+            <li><a href="ameni.html">Amenities</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="room.html#bestvalue">Special Offers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Policies</h4>
+          <ul>
+            <li><a href="policies.html">Privacy Policy</a></li>
+            <li><a href="policies.html#cancellation">Cancellation Policy</a></li>
+            <li><a href="policies.html#terms">Terms of Service</a></li>
+            <li><a href="policies.html#faqs">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p>Get deals and updates</p>
+          <form onsubmit="subscribe(event)">
+            <input type="email" placeholder="Your email" style="padding:0.5rem; width:100%; margin:0.5rem 0; border-radius:4px; border:none;">
+            <button type="submit" class="btn" style="width:100%;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 EP Hotels & Suites. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set min dates for booking
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('checkin').setAttribute('min', today);
+    document.getElementById('checkout').setAttribute('min', today);
+    
+    document.getElementById('checkin').addEventListener('change', function() {
+      document.getElementById('checkout').setAttribute('min', this.value);
+    });
+
+    function bookRoom(e) {
+      e.preventDefault();
+      const checkin = document.getElementById('checkin').value;
+      const checkout = document.getElementById('checkout').value;
+      alert(`Searching availability from ${checkin} to ${checkout}. In a real site, this would connect to your booking engine.`);
+    }
+
+    function sendMessage(e) {
+      e.preventDefault();
+      alert('Message sent! Our team will contact you within 24 hours.');
+      e.target.reset();
+    }
+
+    function subscribe(e) {
+      e.preventDefault();
+      alert('Thanks for subscribing to EP Hotels & Suites!');
+      e.target.reset();
+    }
+
+    // Mobile menu toggle
+    document.querySelector('.mobile-toggle').addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+  </script>
+</body>
+</html>

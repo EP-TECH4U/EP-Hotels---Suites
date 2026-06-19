@@ -1,0 +1,244 @@
+ :root {
+      --primary: #0A4D68;
+      --secondary: #088395;
+      --accent: #F5A623;
+      --light: #F8F9FA;
+      --dark: #1A1A1A;
+      --text: #333;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+      
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    
+    /* Header + Nav */
+    header {
+      background: rgba(10, 77, 104, 0.95);
+      color: white;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .btn {
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.6s;
+      
+    }
+    .btn:hover{
+      transform: scale(1.1);
+    }
+
+    .headerbtn:hover{
+      background-color: #ddd;
+    }
+    
+    .headerbtn {
+         background:  #F5A623; transform: translateY(-2px);
+         color: black;
+          animation: btn 2s ease-in-out infinite;
+          transition: 1s;
+          padding: 15px;
+          padding-left: 100px;
+          padding-right: 100px;
+          border: none;
+          border-radius: 4px;
+          font-weight: 600;
+          cursor:pointer;
+
+        }
+
+        
+        @keyframes btn{
+            50%{transform: translateY(20px);}
+        }
+    .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(ChatGPT\ Image\ May\ 26\,\ 2026\,\ 02_36_34\ PM.png) center/cover,no-repeat;
+      color: white;
+      padding: 8rem 0;
+      text-align: center;
+      background-repeat: no-repeat;
+     
+    }
+    .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+    
+    /* Booking Widget */
+    .booking-widget {
+      background: white;
+      padding: 2rem;
+      margin-top: -3rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
+    }
+    .booking-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      align-items: end;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    /* Sections */
+    section { padding: 4rem 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .section-title p { color: #666; }
+
+    /* Rooms */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .room-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+    .room-card:hover { transform: translateY(-5px);}
+    .room-info { padding: 1.5rem; }
+    .room-info h3 { color: var(--primary); margin-bottom: 0.5rem; }
+    .room-info p{
+      margin-bottom: 1.3rem;
+    }
+    .price { color: var(--accent); font-size: 1.3rem; font-weight: 700; margin: 1rem 0; }
+    .amenities { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; font-size: 0.9rem; }
+    .amenities span { background: var(--light); padding: 0.3rem 0.6rem; border-radius: 4px; }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .feature-box {
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+    }
+    .feature-box i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 1rem; }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .gallery img {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: 0.6s;
+    }
+    .gallery img:hover { transform: scale(1.03); }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      padding: 3rem 0 1rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a:hover { color: var(--accent); }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .hero h1 { font-size: 2.5rem; }
+      .booking-widget { margin-top: -2rem; }
+    }
+    .image4{
+        background: cover/center;
+        width: 700px;
+    }
+    .image10{
+       
+        width: 1000px;
+    }
+    .image11{
+      
+        width: 1000px;
+    }
+    

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Policies & FAQs | EP Hotels & Suites</title>
+  <meta name="description" content="Read EP Hotels & Suites Privacy Policy, Cancellation Policy, Terms of Service, and Frequently Asked Questions.">
+   <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="64*64" href="logo2.png">
+  <style>
+    :root {
+      --primary: #0A4D68;
+      --secondary: #088395;
+      --accent: #F5A623;
+      --light: #F8F9FA;
+      --dark: #1A1A1A;
+      --text: #333;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--light);
+    }
+    a { text-decoration: none; color: var(--secondary); }
+    a:hover { color: var(--primary); }
+    img { max-width: 100%; display: block; }
+
+    /* Header - Same as other pages */
+    header {
+      background: rgba(10, 77, 104, 0.95);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a { color: white; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .btn {
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #e09612; transform: translateY(-2px); }
+    .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: white; }
+
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070') center/cover;
+      color: white;
+      padding: 5rem 0;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .breadcrumb { opacity: 0.8; font-size: 0.95rem; }
+    .breadcrumb a { color: white; }
+    .breadcrumb a:hover { color: var(--accent); }
+
+    /* Policy Layout */
+    section { padding: 4rem 0; }
+    .policy-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Sidebar Nav */
+    .policy-nav {
+      position: sticky;
+      top: 120px;
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    .policy-nav h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .policy-nav ul { list-style: none; }
+    .policy-nav li { margin-bottom: 0.8rem; }
+    .policy-nav a {
+      display: block;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .policy-nav a:hover, .policy-nav a.active {
+      background: var(--light);
+      color: var(--primary);
+    }
+
+    /* Content */
+    .policy-content {
+      background: white;
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    .policy-section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 120px;
+    }
+    .policy-section:last-child { margin-bottom: 0; }
+    .policy-section h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 3px solid var(--accent);
+      display: inline-block;
+    }
+    .policy-section h3 {
+      color: var(--secondary);
+      font-size: 1.3rem;
+      margin: 2rem 0 1rem;
+    }
+    .policy-section p, .policy-section li {
+      margin-bottom: 1rem;
+      color: #444;
+    }
+    .policy-section ul, .policy-section ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .last-updated {
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* Accordion for FAQs */
+    .accordion-item {
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .accordion-header {
+      background: var(--light);
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: var(--primary);
+      transition: 0.3s;
+    }
+    .accordion-header:hover { background: #eef2f5; }
+    .accordion-header span {
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+    .accordion-item.active .accordion-header span { transform: rotate(45deg); }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .accordion-body-content {
+      padding: 1.5rem;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    /* Table for policies */
+    .policy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+    .policy-table th, .policy-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    .policy-table th {
+      background: var(--primary);
+      color: white;
+      font-weight: 600;
+    }
+    .policy-table tr:hover { background: var(--light); }
+
+    /* Footer - Same as other pages */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 { color: white; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a { color: #aaa; }
+    .footer-col a:hover { color: var(--accent); }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .policy-layout { grid-template-columns: 1fr; }
+      .policy-nav { position: static; margin-bottom: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .page-hero h1 { font-size: 2.3rem; }
+      .policy-content { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">EP <span>Hotels & Suites</span></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="room.html">Rooms</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="policies.html" class="active">Policies</a></li>
+        </ul>
+        <button class="btn" onclick="window.location.href='rooms.html'">Book Now</button>
+        <div class="mobile-toggle">☰</div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Policies & FAQs</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <span>Policies</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section>
+    <div class="container">
+      <div class="policy-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="policy-nav">
+          <h4>On This Page</h4>
+          <ul>
+            <li><a href="#privacy" class="active">Privacy Policy</a></li>
+            <li><a href="#cancellation">Cancellation Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </aside>
+
+        <!-- Policy Content -->
+        <div class="policy-content">
+          <div class="last-updated">
+            <strong>Last Updated:</strong> October 1, 2026
+          </div>
+
+          <!-- Privacy Policy -->
+          <div class="policy-section" id="privacy">
+            <h2>Privacy Policy</h2>
+            <p>EP Hotels & Suites is committed to protecting your personal information. This policy explains how we collect, use, and safeguard your data.</p>
+
+            <h3>1. Information We Collect</h3>
+            <p>We collect information you provide during booking, check-in, and through our website, including:</p>
+            <ul>
+              <li>Name, email address, phone number, and postal address</li>
+              <li>Payment details and billing information</li>
+              <li>Government-issued ID for legal compliance</li>
+              <li>Preferences, special requests, and stay history</li>
+              <li>Website usage data via cookies and analytics</li>
+            </ul>
+
+            <h3>2. How We Use Your Information</h3>
+            <p>Your data is used to:</p>
+            <ul>
+              <li>Process reservations and payments</li>
+              <li>Provide personalized guest services</li>
+              <li>Communicate booking confirmations and updates</li>
+              <li>Improve our services and website experience</li>
+              <li>Comply with legal and regulatory requirements</li>
+            </ul>
+
+            <h3>3. Data Security & Sharing</h3>
+            <p>We use SSL encryption and secure servers to protect your data. We do not sell your information. Data may be shared only with trusted partners for payment processing, legal compliance, or with your consent.</p>
+
+            <h3>4. Your Rights</h3>
+            <p>You may request access, correction, or deletion of your personal data by contacting privacy@ephotels.com. You may also opt out of marketing communications at any time.</p>
+          </div>
+
+          <!-- Cancellation Policy -->
+          <div class="policy-section" id="cancellation">
+            <h2>Cancellation Policy</h2>
+            <p>We understand plans change. Please review our cancellation terms below.</p>
+
+            <table class="policy-table">
+              <tr>
+                <th>Rate Type</th>
+                <th>Cancellation Window</th>
+                <th>Penalty</th>
+              </tr>
+              <tr>
+                <td><strong>Flexible Rate</strong></td>
+                <td>Free cancellation until 6:00 PM, 1 day before arrival</td>
+                <td>No charge</td>
+              </tr>
+              <tr>
+                <td><strong>Advance Purchase</strong></td>
+                <td>Non-refundable, non-changeable</td>
+                <td>100% charge at booking</td>
+              </tr>
+              <tr>
+                <td><strong>Group Bookings 5+ rooms</strong></td>
+                <td>Free cancellation up to 14 days before arrival</td>
+                <td>50% charge within 14 days</td>
+              </tr>
+              <tr>
+                <td><strong>No-Show</strong></td>
+                <td>Guest does not arrive and did not cancel</td>
+                <td>1 night charge + taxes</td>
+              </tr>
+            </table>
+
+            <h3>Early Departure</h3>
+            <p>Guests checking out before the reserved departure date will be charged for the full reserved stay unless otherwise agreed in writing.</p>
+
+            <h3>Force Majeure</h3>
+            <p>In case of natural disasters, government restrictions, or other unforeseen events, we offer free rebooking within 12 months or a full refund at management discretion.</p>
+          </div>
+
+          <!-- Terms of Service -->
+          <div class="policy-section" id="terms">
+            <h2>Terms of Service</h2>
+            
+            <h3>1. Reservations & Check-In</h3>
+            <p>Check-in time is 3:00 PM. Check-out is 12:00 PM. Early check-in and late check-out are subject to availability and may incur fees. A valid government ID and credit card are required at check-in.</p>
+
+            <h3>2. Guest Conduct</h3>
+            <p>Guests must respect hotel property and other guests. Smoking is prohibited in all rooms and incurs a $250 cleaning fee. Parties and excessive noise are not permitted. Management reserves the right to evict guests violating policies without refund.</p>
+
+            <h3>3. Liability</h3>
+            <p>EP Hotels & Suites is not responsible for loss or damage to personal property. Safe deposit boxes are available. Guests are liable for any damage to hotel property caused by them or their visitors.</p>
+
+            <h3>4. Children & Pets</h3>
+            <p>Children under 12 stay free using existing bedding. Cribs available on request. Pets are not permitted except certified service animals.</p>
+
+            <h3>5. Website Use</h3>
+            <p>All content on this website is property of EP Hotels & Suites. You may not reproduce or distribute content without permission. Rates and availability are subject to change.</p>
+          </div>
+
+          <!-- FAQs -->
+          <div class="policy-section" id="faqs">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                What time is check-in and check-out? <span>+</span>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-body-content">
+                  Check-in is from 3:00 PM and check-out is by 12:00 PM. Early check-in or late check-out may be arranged based on availability. A fee may apply for late check-out after 2:00 PM.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                Do you offer airport pickup? <span>+</span>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-body-content">
+                  Yes. We offer complimentary luxury SUV airport transfers for all direct bookings. Please provide your flight details at least 24 hours before arrival to schedule pickup.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                Is breakfast included in the room rate? <span>+</span>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-body-content">
+                  Breakfast inclusion depends on your rate. Most Flexible and Executive rates include daily buffet breakfast at Café Lumière. Advance Purchase rates are room-only unless specified.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                What is your pet policy? <span>+</span>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-body-content">
+                  We do not allow pets, with the exception of certified service animals as defined by law. Documentation may be required at check-in.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                Do you have parking? <span>+</span>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-body-content">
+                  Yes. Complimentary valet parking is available for all hotel guests. Self-parking is also available in our secured underground garage at no charge.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                How can I modify or cancel my reservation? <span>+</span>
+              </div>
+              <div class="accordion-body">
+                <div class="accordion-body-content">
+                  You can manage your booking through the link in your confirmation email, or contact our reservations team at +234 800 EP HOTEL or reservations@ephotels.com. Cancellation terms depend on your rate type.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>EP Hotels & Suites</h4>
+          <p>Redefining luxury hospitality since 2015. Your comfort is our priority.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="room.html">Rooms & Suites</a></li>
+            <li><a href="ameni.html">Amenities</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="policies.html">Policies & FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#cancellation">Cancellation Policy</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>📍 123 Luxury Avenue, Victoria Island, Lagos</p>
+          <p>📞 +234 813 896 2418 EP HOTEL</p>
+          <p>✉️ ebukaprosperity12@gmail.com</p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 EP Hotels & Suites. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.mobile-toggle').addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Accordion for FAQs
+    function toggleAccordion(element) {
+      const item = element.parentElement;
+      const body = item.querySelector('.accordion-body');
+      
+      item.classList.toggle('active');
+      
+      if (item.classList.contains('active')) {
+        body.style.maxHeight = body.scrollHeight + 'px';
+      } else {
+        body.style.maxHeight = 0;
+      }
+    }
+
+    // Active sidebar link on scroll
+    const sections = document.querySelectorAll('.policy-section');
+    const navLinks = document.querySelectorAll('.policy-nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll for sidebar links
+    document.querySelectorAll('.policy-nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

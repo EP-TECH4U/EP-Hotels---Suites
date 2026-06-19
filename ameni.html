@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amenities & Experiences | EP Hotels & Suites</title>
+  <meta name="description" content="Discover world-class amenities at EP Hotels & Suites: rooftop pool, luxury spa, fine dining, business center, and exclusive guest experiences.">
+
+   <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="64*64" href="logo2.png">
+  <style>
+    :root {
+      --primary: #0A4D68;
+      --secondary: #088395;
+      --accent: #F5A623;
+      --light: #F8F9FA;
+      --dark: #1A1A1A;
+      --text: #333;
+      --success: #27ae60;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--light);
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    
+    /* Header - Same as Home/Rooms */
+    header {
+      background: rgba(10, 77, 104, 0.95);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .btn {
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #e09612; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    .btn-outline:hover { background: white; color: var(--primary); }
+    .mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(pexels-ahmetcotur-28054849.jpg) center/cover;
+      color: white;
+      padding: 6rem 0;
+      text-align: center;
+    }
+    .page-hero h1 { font-size: 3.2rem; margin-bottom: 1rem; }
+    .page-hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; }
+    .breadcrumb { opacity: 0.8; font-size: 0.95rem; }
+    .breadcrumb a:hover { color: var(--accent); }
+
+    /* Section Base */
+    section { padding: 5rem 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .section-title p { color: #666; max-width: 600px; margin: auto; }
+
+    /* Featured Experience - Unique Hero Card */
+    .featured-exp {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      margin-bottom: 5rem;
+     
+    }
+    .featured-img {
+      height: 100%;
+      min-height: 450px;
+      background: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2080') center/cover;
+    }
+    .featured-content {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-content .tag {
+      background: var(--accent);
+      color: var(--dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: fit-content;
+      margin-bottom: 1rem;
+    }
+    .featured-content h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
+    .featured-content p { margin-bottom: 2rem; }
+
+    /* Amenities Grid - Interactive Cards */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .amenity-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.4s;
+      position: relative;
+    }
+    .amenity-card:hover { transform: translateY(-10px); }
+    .amenity-img {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+    .amenity-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+    .amenity-card:hover .amenity-img img { transform: scale(1.1); }
+    .amenity-icon {
+      position: absolute;
+      bottom: -25px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border: 4px solid white;
+    }
+    .amenity-info { padding: 2rem 1.5rem 1.5rem; }
+    .amenity-info h3 { color: var(--primary); margin-bottom: 0.8rem; }
+    .amenity-info p { color: #555; font-size: 0.95rem; margin-bottom: 1rem; }
+    .amenity-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: #666;
+      border-top: 1px solid #eee;
+      padding-top: 1rem;
+    }
+
+    /* Experience Timeline - Unique Section */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      background: var(--secondary);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1.5px;
+    }
+    .timeline-item {
+      padding: 1rem 3rem;
+      position: relative;
+      width: 50%;
+    }
+    .timeline-item.left { left: 0; text-align: right; }
+    .timeline-item.right { left: 50%; }
+    .timeline-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border: 4px solid white;
+      top: 30px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .timeline-item.left::after { right: -10px; }
+    .timeline-item.right::after { left: -10px; }
+    .timeline-time { font-weight: 700; color: var(--secondary); margin-bottom: 0.5rem; }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 16px;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 4rem 0;
+    }
+    .cta-banner h3 { font-size: 2.2rem; margin-bottom: 1rem; }
+    .cta-banner p { margin-bottom: 2rem; opacity: 0.9; }
+
+    /* Footer - Same as Home/Rooms */
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      padding: 3rem 0 1rem;
+      margin-top: 4rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    .footer-col h4 { color: white; margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.5rem; }
+    .footer-col a:hover { color: var(--accent); }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .featured-exp { grid-template-columns: 1fr; }
+      .featured-img { min-height: 300px; }
+      .timeline::after { left: 20px; }
+      .timeline-item { width: 100%; padding-left: 60px; padding-right: 1rem; }
+      .timeline-item.left, .timeline-item.right { left: 0; text-align: left; }
+      .timeline-item.left::after, .timeline-item.right::after { left: 10px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .page-hero h1 { font-size: 2.3rem; }
+      .amenities-grid { grid-template-columns: 1fr; }
+    }
+   
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">EP <span>Hotels & Suites</span></div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="room.html">Rooms</a></li>
+          <li><a href="ameni.html" class="active">Amenities</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="btn" onclick="window.location.href='rooms.html'">Book Your Stay</button>
+        <div class="mobile-toggle">☰</div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>World-Class Amenities</h1>
+      <p>More than a stay — EP Hotels & Suites curates experiences. From sunrise yoga on our rooftop to midnight dining, every detail is designed for your comfort and joy.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <span>Amenities</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Experience -->
+  <section>
+    <div class="container">
+      
+      <div class="featured-exp">
+          
+         
+        <div class="featured-img"></div>
+        <div class="featured-content">
+        
+          <span class="tag">Signature Experience</span>
+          <h3>Skyline Infinity Pool & Lounge</h3>
+          <p>Swim above the city at our 25th-floor infinity pool. Open from 6AM to midnight, with poolside cabanas, craft cocktails, and live DJ sets every Friday. Complimentary for all guests.</p>
+          <div style="display: flex; gap: 1rem;">
+            <button class="btn">View Pool Hours</button>
+            <button class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">Reserve Cabana</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Amenities Grid -->
+  <section style="background: white;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Everything You Need, Elevated</h2>
+        <p>Explore our full range of amenities designed for business, relaxation, and celebration</p>
+      </div>
+
+      <div class="amenities-grid">
+        <!-- 1. Spa -->
+        <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="gettyimages-2173203104-612x612.jpg" alt="Luxury Spa">
+            <div class="amenity-icon">💆</div>
+          </div>
+          <div class="amenity-info">
+            <h3>EP Serenity Spa</h3>
+            <p>Full-service spa with 8 treatment rooms, hammam, sauna, and couples’ suites. Signature treatments use African botanicals.</p>
+            <div class="amenity-meta">
+              <span>🕒 9AM - 10PM</span>
+              <span>📍 4th Floor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Dining -->
+        <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="photo-1559339352-11d035aa65de.jpeg" alt="Fine Dining">
+            <div class="amenity-icon">🍽️</div>
+          </div>
+          <div class="amenity-info">
+            <h3>Three Unique Restaurants</h3>
+            <p>Skyline Grill steakhouse, Bistro Lagos for local cuisine, and Café Lumière for all-day international dining + room service.</p>
+            <div class="amenity-meta">
+              <span>🕒 6AM - 12AM</span>
+              <span>📍 Lobby & 25F</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Fitness -->
+        <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="gettyimages-1269692749-612x612.jpg" alt="Fitness Center">
+            <div class="amenity-icon">💪</div>
+          </div>
+          <div class="amenity-info">
+            <h3>24/7 Fitness Studio</h3>
+            <p>Technogym equipment, Peloton bikes, free weights, and daily yoga/HIIT classes. Personal trainers available on request.</p>
+            <div class="amenity-meta">
+              <span>🕒 24/7 Access</span>
+              <span>📍 5th Floor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Business -->
+        <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="gettyimages-1446266967-612x612.jpg" alt="Business Center">
+            <div class="amenity-icon">💼</div>
+          </div>
+          <div class="amenity-info">
+            <h3>Executive Business Hub</h3>
+            <p>12 meeting rooms, 200-seat ballroom, high-speed fiber WiFi, printing, and secretarial services. Zoom rooms included.</p>
+            <div class="amenity-meta">
+              <span>🕒 7AM - 11PM</span>
+              <span>📍 2nd Floor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Concierge -->
+        <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="istockphoto-1448506100-612x612.jpg" alt="Concierge">
+            <div class="amenity-icon">🛎️</div>
+          </div>
+          <div class="amenity-info">
+            <h3>24/7 Les Clefs d’Or Concierge</h3>
+            <p>From airport transfers to private city tours, restaurant reservations, and surprise celebrations — we handle it all.</p>
+            <div class="amenity-meta">
+              <span>🕒 24/7 Service</span>
+              <span>📍 Lobby</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Kids -->
+        <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="istockphoto-1315673264-612x612.jpg" alt="Kids Club">
+            <div class="amenity-icon">🧸</div>
+          </div>
+          <div class="amenity-info">
+            <h3>EP Kids Club & Creche</h3>
+            <p>Supervised play area for ages 3-12 with daily activities, PS5, and babysitting services. Complimentary for guests.</p>
+            <div class="amenity-meta">
+              <span>🕒 8AM - 8PM</span>
+              <span>📍 Garden Wing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Transport -->
+        <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="240_F_2009188180_qpH1G7EneAMWoE6yGaMeVv2qVjtjCvUj.jpg" alt="Airport Shuttle">
+            <div class="amenity-icon">🚗</div>
+          </div>
+          <div class="amenity-info">
+            <h3>Complimentary Airport Shuttle</h3>
+            <p>Free luxury SUV transfers to/from Lagos International Airport for all direct bookings. Valet parking also included.</p>
+            <div class="amenity-meta">
+              <span>🕒 On Request</span>
+              <span>📍 Main Entrance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Tech -->
+        <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="istockphoto-579240946-612x612.jpg" alt="Smart Room">
+            <div class="amenity-icon">📶</div>
+          </div>
+          <div class="amenity-info">
+            <h3>Smart Rooms & Fiber WiFi</h3>
+            <p>1Gbps WiFi in all areas, voice-controlled lighting, Netflix, wireless charging, and mobile key access via EP App.</p>
+            <div class="amenity-meta">
+              <span>🕒 24/7 Support</span>
+              <span>📍 All Rooms</span>
+            </div>
+          </div>
+        </div>
+         <div class="amenity-card">
+          <div class="amenity-img">
+            <img src="istockphoto-579240946-612x612.jpg" alt="Smart Room">
+            <div class="amenity-icon">📶</div>
+          </div>
+          <div class="amenity-info">
+            <h3>Smart Rooms & Fiber WiFi</h3>
+            <p>1Gbps WiFi in all areas, voice-controlled lighting, Netflix, wireless charging, and mobile key access via EP App.</p>
+            <div class="amenity-meta">
+              <span>🕒 24/7 Support</span>
+              <span>📍 All Rooms</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Your Perfect Day at EP</h2>
+        <p>Here’s how guests love to experience our amenities</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-time">6:30 AM</div>
+            <h4>Sunrise Yoga</h4>
+            <p>Complimentary rooftop yoga session overlooking the Atlantic.</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <div class="timeline-time">8:00 AM</div>
+            <h4>Gourmet Breakfast</h4>
+            <p>Buffet + à la carte at Café Lumière with live cooking stations.</p>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-time">11:00 AM</div>
+            <h4>Spa or Pool Time</h4>
+            <p>Book a massage or grab a cabana at the infinity pool.</p>
+          </div>
+        </div>
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <div class="timeline-time">3:00 PM</div>
+            <h4>Business or Explore</h4>
+            <p>Use our Business Hub or ask Concierge to arrange a city tour.</p>
+          </div>
+        </div>
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <div class="timeline-time">7:30 PM</div>
+            <h4>Sunset Dining</h4>
+            <p>Reserve Skyline Grill for steak + cocktails with a view.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div class="container">
+    <div class="cta-banner">
+      <h3>Ready to Experience EP Hotels & Suites?</h3>
+      <p>Book direct for the best rates, free airport shuttle, and exclusive amenity access</p>
+      <a href="room.html">
+        <button class="btn btn-outline" onclick="window.location.href=''">View Rooms & Book</button>
+      </a>
+      
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>EP Hotels & Suites</h4>
+          <p>Redefining luxury hospitality since 2015. Your comfort is our priority.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="room.html">Rooms & Suites</a></li>
+            <li><a href="ameni.html">Amenities</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="#">Special Offers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Guest Services</h4>
+          <ul>
+            <li><a href="#">Airport Transfer</a></li>
+            <li><a href="#">Spa Reservations</a></li>
+            <li><a href="#">Dining Reservations</a></li>
+            <li><a href="#">Events & Weddings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>📍 123 Luxury Avenue, Victoria Island, Lagos</p>
+          <p>📞 +234 813 896 2418 EP HOTEL</p>
+          <p>✉️ ebukaprosperity12@gmail.com</p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 EP Hotels & Suites. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.mobile-toggle').addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    function bookRoom(name, price) {
+      alert(`Booking ${name} at $${price}/night. Redirecting to secure booking...`);
+      window.location.href = 'rooms.html';
+    }
+  </script>
+</body>
+</html>
