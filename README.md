@@ -41,7 +41,7 @@ This project highlights:
 1. Clone the repository:
 
    ```bash
-   [git clone https://github.com/yourusername/ep-hotels-and-suites.git](https://github.com/EP-TECH4U/EP-Hotels---Suites)
+       https://github.com/EP-TECH4U/EP-Hotels---Suites
    ```
 
 2. Open the project folder.
