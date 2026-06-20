@@ -43,7 +43,6 @@ This project highlights:
    ```bash
        https://github.com/EP-TECH4U/EP-Hotels---Suites
    ```
-
 2. Open the project folder.
 
 3. Launch `index.html` in your browser.
@@ -51,10 +50,13 @@ This project highlights:
 ## 📸 Screenshots
 * HomePage
 <img width="1819" height="1029" alt="image" src="https://github.com/user-attachments/assets/4bda8c13-13e9-4810-952b-0339afab8197" />
+
 * Room Page
 <img width="1827" height="1754" alt="image" src="https://github.com/user-attachments/assets/98e9488c-f697-4a4d-b457-f4f39fc94506" />
+
 * Gallaries
 <img width="1818" height="1381" alt="image" src="https://github.com/user-attachments/assets/bb9b2bb4-4006-43df-a2b7-41f276f976b6" />
+
 * Amenities
 <img width="1815" height="1104" alt="image" src="https://github.com/user-attachments/assets/5c49d60d-ee83-4f76-abb1-9b64c4b3252a" />
 
